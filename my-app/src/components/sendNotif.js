@@ -91,7 +91,6 @@ class SendNotification extends Component {
         "subject":this.state.subject,
         "text":this.state.message
     },{headers: { Authorization: this.authData }})
-   console.log(sendNotif)
     window.alert(sendNotif.data.data.message)
     }
      
