@@ -46,5 +46,7 @@ const userFind = Joi.object().keys({
 module.exports = {
     userCreate,
     userEdit,
-    userFind
+    userFind,
+ notificationschema 
+
 }
