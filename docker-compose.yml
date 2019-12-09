@@ -15,4 +15,12 @@ services:
     container_name: mongo_container
     image: mongo
     ports:
-     - '27017:27017'   
+     - '27017:27017'
+  frontend:
+    container_name: app
+    build:
+        context: ./my-app/
+        dockerfile: ./DockerFile
+    image: react
+    ports:
+        - "3000:3000"   

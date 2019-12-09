@@ -103,6 +103,7 @@ exports.send_notification = async (req, res) => {
                 }
             }
             catch (err) {
+                console.log(err)
                 return res.json({
                     error: {
                         message: "UNKNOWN",
