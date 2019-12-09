@@ -1,5 +1,18 @@
 const Joi = require('joi');
 
+const notificationschema = Joi.object().keys({
+    subject: Joi.string(),
+    to:Joi.array().items(Joi.object().keys({
+        _id:Joi.string().required(),
+        userName: Joi.string().required(),
+        email: Joi.string().email().required(),
+        phoneNumber:Joi.string().regex(/^([+]39)?((3[\d]{2})([ ,\-,\/]){0,1}([\d, ]{6,9}))|(((0[\d]{1,4}))([ ,\-,\/]){0,1}([\d, ]{5,10}))$/)
+        .required()
+    })).required(),
+    text: Joi.string().min(10).required(),
+    type:Joi.string().valid("email", "sms").required()
+})
+
 const userCreate = Joi.object().keys({
     user: Joi.object().keys({
         userName: Joi.string().required(),
