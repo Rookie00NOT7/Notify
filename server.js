@@ -6,7 +6,7 @@ require('dotenv').config()
 // Require Router Handlers
 const app = express()
 const user = require("./api/routes/user.route")
-
+const notification = require("./api/routes/notification.route")
 
 //DB connection 
 const url = require('./config/DBconfig')
@@ -27,6 +27,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(cors())
 
 app.use('/api/v1/users',user)
+app.use('/api/v1/notifications',notification)
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Server up on ${port} 👍`))

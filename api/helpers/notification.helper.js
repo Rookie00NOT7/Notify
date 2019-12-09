@@ -1,5 +1,5 @@
-const nodemailer = require("nodemailer")
-const jwt = require("jsonwebtoken")
+const nodemailer = require('nodemailer')
+const jwt = require('jsonwebtoken')
 const EMAIL = require('../../config/DEVkeys').email
 const EmailPass = require('../../config/DEVkeys').emailPass
 const accountSid = require('../../config/DEVkeys').accountSid
