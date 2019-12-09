@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
-
+const logger = require('./api/middleware/logger').verifyToken
 
 // Require Router Handlers
 const app = express()
@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(cors())
 
 app.use('/api/v1/users',user)
-app.use('/api/v1/notifications',notification)
+app.use('/api/v1/notifications',logger,notification)
 app.use('/login',login)
 
 
