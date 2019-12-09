@@ -5,6 +5,7 @@ require('dotenv').config()
 
 // Require Router Handlers
 const app = express()
+const user = require("./api/routes/user.route")
 
 
 //DB connection 
