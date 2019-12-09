@@ -4,6 +4,7 @@ import {
   FormGroup, Label, Input,
   Button,
 } from 'reactstrap';
+import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -84,7 +85,7 @@ class Signup extends Component {
         {
           alert("Signed up Sucessfully")
           this.setState({login:true})  
-          localStorage.setItem('id', response.data.data.user.id)
+          //localStorage.setItem('id', response.data.data.user.id)
          
        }
         }
@@ -150,7 +151,7 @@ class Signup extends Component {
               <Input
                 type="password"
                 name="password"
-                placeholder="********"
+                placeholder="****"
                 onChange={this.handlePasswordChange}
               />
             </FormGroup>
