@@ -7,6 +7,7 @@ require('dotenv').config()
 const app = express()
 const user = require("./api/routes/user.route")
 const notification = require("./api/routes/notification.route")
+const login=require("./api/routes/login")
 
 //DB connection 
 const url = require('./config/DBconfig')
@@ -28,6 +29,8 @@ app.use(cors())
 
 app.use('/api/v1/users',user)
 app.use('/api/v1/notifications',notification)
+app.use('/login',login)
+
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Server up on ${port} 👍`))
