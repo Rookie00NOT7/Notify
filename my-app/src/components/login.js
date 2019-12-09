@@ -29,14 +29,14 @@ class Login extends Component {
 
     e.preventDefault();
     this.setState({login:true})
-    let res = await Axios.post('http://localhost:5000/login',{
+    let res = await Axios.post(`http://192.168.99.100:5000/login`,{
       email: this.state.email,
       password: this.state.password
     })
     let errMessage = res.data.message
     let token = res.data
     if(token){
-      localStorage.setItem('token', JSON.stringify(token))
+      await localStorage.setItem('token', JSON.stringify(token))
       console.log(token);
     }
     console.log(JSON.parse(localStorage.getItem('token')))

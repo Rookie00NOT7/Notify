@@ -1,7 +1,7 @@
 version: '3'
 services:
   backend:
-    container_name: server
+    container_name: backend
     restart: always
     build: .
     ports:
@@ -12,12 +12,13 @@ services:
       context: .
       dockerfile: DockerFile
   mongo:
-    container_name: mongo_container
+    container_name: mongo
     image: mongo
     ports:
      - '27017:27017'
   frontend:
-    container_name: app
+    container_name: frontend
+    restart: always
     build:
         context: ./my-app/
         dockerfile: ./DockerFile

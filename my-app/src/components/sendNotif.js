@@ -14,12 +14,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+//import host from '../../../config/DEVkeys.js';
 
 class SendNotification extends Component {
     constructor(props){
       super(props);
+      console.log( JSON.parse(localStorage.getItem('token')))
       this.userData = JSON.parse(localStorage.getItem('token')).userData;
       this.authData = JSON.parse(localStorage.getItem('token')).authData;
+      
       this.state = {
           type: "",
           courses :[],
@@ -41,7 +44,7 @@ class SendNotification extends Component {
     }
    
     async handleTypeChange(e){
-          let getCourses = await axios.get(`http://localhost:5000/api/v1/users/getCourses/${this.userData.userId}`,{headers: { Authorization: this.authData }})
+          let getCourses = await axios.get(`http://192.168.99.100:5000/api/v1/users/getCourses/${this.userData.userId}`,{headers: { Authorization: this.authData }})
           this.setState({
               courses: getCourses.data,
               method:document.get,
@@ -77,7 +80,7 @@ class SendNotification extends Component {
    async handleSubmit(e) {
     e.preventDefault();
 
-    let getReceivers = await axios.post(`http://localhost:5000/api/v1/users/viewUsers`,{
+    let getReceivers = await axios.post(`http://192.168.99.100:5000/api/v1/users/viewUsers`,{
         "courses":this.state.courseSelected,
         "userType": this.state.type
     },{headers: { Authorization: this.authData }})
@@ -85,12 +88,13 @@ class SendNotification extends Component {
         to: getReceivers.data
     })
     
-    let sendNotif = await axios.post(`http://localhost:5000/api/v1/notifications/sendNotification/${this.userData.userId}`,{
+    let sendNotif = await axios.post(`http://192.168.99.100:5000/api/v1/notifications/sendNotification/${this.userData.userId}`,{
         "to":this.state.to,
         "type":this.state.method,
         "subject":this.state.subject,
         "text":this.state.message
     },{headers: { Authorization: this.authData }})
+    console.log(sendNotif)
     window.alert(sendNotif.data.data.message)
     }
      

@@ -14,6 +14,8 @@ import {BrowserRouter as Router,Route,
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+//import host from '../../../config/DEVkeys.js';
+
 
 class Signup extends Component {
   constructor(props){
@@ -67,7 +69,7 @@ class Signup extends Component {
       if(this.state.userName!==''&&this.state.email!==''&&this.state.phoneNumber!==''&&
         this.state.type!==''&&this.state.password!==''&&this.state.courses!=='')
         {
-          const response=await axios.post('http://localhost:5000/api/v1/users/create',{
+          const response=await axios.post(`http://192.168.99.100:5000/api/v1/users/create`,{
         "user":{
           "userName": this.state.userName,
           "email":this.state.email,

@@ -52,8 +52,8 @@ exports.send_notification = async (req, res) => {
                             text:doc.text,
                             type:doc.type
                         })
-                        newNotification.save()
-                        return res.json({
+                        await newNotification.save()
+                        return await res.json({
                             data: {
                                 message: 'notification sent' 
                             }

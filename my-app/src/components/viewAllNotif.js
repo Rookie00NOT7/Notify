@@ -7,11 +7,10 @@ import {
     Container,
     Button
   } from 'reactstrap';
-import {BrowserRouter as Router,Route,
+import {BrowserRouter as
     Redirect} from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
 class viewAllNotif extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +35,7 @@ class viewAllNotif extends Component {
   }
 
     async componentDidMount() {
-        let logs = await axios.get(`http://localhost:5000/api/v1/notifications/viewNotification/${this.userData.userId}`,{headers : { Authorization: this.authData }})
+        let logs = await axios.get(`http://192.168.99.100:5000/api/v1/notifications/viewNotification/${this.userData.userId}`,{headers : { Authorization: this.authData }})
         console.log(logs)
             this.setState({notifications: logs.data.map((notif, index) => {
                 const {_id,to, subject, text, type,createdAt} = notif //destructuring

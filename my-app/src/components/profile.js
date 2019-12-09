@@ -51,7 +51,7 @@ class Profile extends Component {
    async componentDidMount() {
     let response;
     try{
-        response = await axios.get(`http://localhost:5000/api/v1/users/get/${this.userData.userId}`, {headers : { Authorization: this.authData }})
+        response = await axios.get(`http://192.168.99.100:5000/api/v1/users/get/${this.userData.userId}`, {headers : { Authorization: this.authData }})
       }catch(ex){}
     this.setState({userName:response.data.data.data.userName}) 
     this.setState({email:response.data.data.data.email})
@@ -89,7 +89,7 @@ class Profile extends Component {
       if(this.state.userName!==''&&this.state.email!==''&&this.state.phoneNumber!==''&&
         this.state.type!==''&&this.state.courses!=='')
         {
-          const response=await axios.post('http://localhost:5000/api/v1/users/edit/'+this.userData.userId,{
+          const response=await axios.post(`http://192.168.99.100:5000/api/v1/users/edit/${this.userData.userId}`,{
         "user":{
           "userName": this.state.userName,
           "email":this.state.email,
@@ -116,7 +116,7 @@ class Profile extends Component {
     }
     async handleDelete (e) {
         e.preventDefault();
-            await axios.post('http://localhost:5000/api/v1/users/delete/'+this.userData.userId, {headers : { Authorization: this.authData }})
+            await axios.post(`http://192.168.99.100:5000/api/v1/users/delete/${this.userData.userId}`, {headers : { Authorization: this.authData }})
               alert("Deleted Sucessfully")         
           }
 
